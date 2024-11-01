@@ -79,6 +79,10 @@ class ComfyApi extends EventTarget {
       options.cache = 'no-cache'
     }
 
+    if (route.startsWith('http://')) {
+      route = route.replace('http://', 'https://');
+    }
+    
     if (Array.isArray(options.headers)) {
       options.headers.push(['Comfy-User', this.user])
     } else if (options.headers instanceof Headers) {
